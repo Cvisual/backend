@@ -1,6 +1,12 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 
-const sequelize =  new Sequelize('mysql://root:password@localhost:3306/crud');
+const sequelize =  new Sequelize('mysql://root@localhost:3306/crud');
+
+sequelize.sync().then(() => {
+  console.log('Tables synchronized successfully');
+}).catch(error => {
+  console.log('Error syncing tables: ', error);
+});
 
 class Empresa extends Model {
   public id!: Number;
