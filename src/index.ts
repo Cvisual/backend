@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import express from 'express';
 import {json} from "body-parser";
 import rutasEmpresa from './routes/empresa.routes';
@@ -18,4 +16,3 @@ app.use('/galerias', rutasGalerias);
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 })
->>>>>>> Stashed changes
