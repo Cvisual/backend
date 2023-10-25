@@ -18,7 +18,7 @@ class Empresa extends Model {
 
 Empresa.init({
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.BIGINT,
     autoIncrement: true,
     primaryKey: true,
   },
