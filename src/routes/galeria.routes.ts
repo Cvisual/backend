@@ -1,7 +1,7 @@
 import {Router} from 'express';
 import { crearGaleria, obtenerGalerias, obtenerUnaGaleria, actualizarUnaGaleria, eliminarUnaGaleria } from '../controllers/galeria.controller';
 
-import uploadFile from '../middlewares/uploadFile';
+const uploadFile = require('../middlewares/uploadFile');
 
 
 const router = Router();

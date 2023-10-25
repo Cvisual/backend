@@ -1,6 +1,6 @@
 import multer from 'multer';
 
-const uploadFile = (campo: string) => {
+export const uploadFile = (campo: string) => {
   const storage = multer.diskStorage({
     destination: './public',
     filename: (req, file, cb) => {
@@ -13,4 +13,4 @@ const uploadFile = (campo: string) => {
   return upload;
 }
 
-export default uploadFile;
+module.exports = uploadFile;
