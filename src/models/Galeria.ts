@@ -1,11 +1,11 @@
 import { DataTypes, Model, Sequelize } from "sequelize";
 import Empresa from "./Empresa";
 
-const sequelize =  new Sequelize('mysql://root@localhost:3306/crud');
+import sequelize from './db';
 
 sequelize.sync().then(() => {
   console.log('Tables synchronized successfully');
-}).catch(error => {
+}).catch((error: any) => {
   console.log('Error syncing tables: ', error);
 });
 

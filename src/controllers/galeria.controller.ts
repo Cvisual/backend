@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-const { QueryTypes } = require('sequelize');
 import Galeria from "../models/Galeria";
-import sequelize from "sequelize";
 
 export const crearGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    

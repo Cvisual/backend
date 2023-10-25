@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "8dd23b1c-8d3c-4c5d-8681-42cf91858261",
+		"name": "Prueba salesland",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13337209"
+	},
+	"item": [
+		{
+			"name": "crear empresa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"test 1\",\n    \"descripcion\": \"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.\",\n    \"historia\": \"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen\",\n    \"fecha\": \"2023-10-23T21:36:14.197Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/empresas"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener listado de empresas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/empresas"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener una empresa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/empresas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar empresa",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"test 1\",\n    \"descripcion\": \"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.\",\n    \"historia\": \"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen\",\n    \"fecha\": \"2023-10-23T21:36:14.197Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/empresas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar una empresa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:3000/empresas/1"
+			},
+			"response": []
+		},
+		{
+			"name": "crear galeria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "empresa_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/Users/carlos/Documents/dataTest/img4.jpg"
+						},
+						{
+							"key": "descripcion",
+							"value": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/galerias"
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar una galeria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "empresa_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "imagen",
+							"type": "file",
+							"src": "/Users/carlos/Documents/dataTest/img2.jpg"
+						},
+						{
+							"key": "descripcion",
+							"value": "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:3000/galerias/1"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener listado de galerias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/galerias"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener una galeria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/galerias/1"
+			},
+			"response": []
+		},
+		{
+			"name": "obtener listado de galerias por empresa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/galerias/empresa/1"
+			},
+			"response": []
+		}
+	]
+}
