@@ -1,10 +1,22 @@
 import { Request, Response } from "express";
+const { QueryTypes } = require('sequelize');
 import Galeria from "../models/Galeria";
+import sequelize from "sequelize";
 
 export const crearGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    
-    const {empresa_id, imagen, descripcion} = req.body;
-    const galeria =  await Galeria.create({empresa_id, imagen, descripcion,});
+    const {empresa_id, descripcion} = req.body;
+    if (!req.file) {
+      res.status(404).json({message: 'debe cargar un archivo'});
+    }
+
+    const foto = req.file?.originalname;
+    const data = {
+      empresa_id,
+      imagen: foto,
+      descripcion,
+    }
+    const galeria =  await Galeria.create(data);
     res.status(200).json(galeria);
   } catch (error) {
     console.error(error);
@@ -12,7 +24,7 @@ export const crearGaleria = async (req: Request, res: Response): Promise<void> =
   }
 }
 
-export const obtenerGalerias = async (res: Response): Promise<void> => {
+export const obtenerGalerias = async (req: Request, res: Response): Promise<void> => {
   try {
     const galerias = await Galeria.findAll();
     res.status(200).json(galerias);
@@ -37,18 +49,42 @@ export const obtenerUnaGaleria = async (req: Request, res: Response): Promise<vo
   }
 }
 
+export const obtenerGaleriasPorEmpresa = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const param =  req.params.id;
+    const galerias = await Galeria.findAll({
+      where: {
+        empresa_id: param,
+      }
+    });
+    res.status(200).json(galerias);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
 export const actualizarUnaGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    
     const {id} =  req.params;
-    const {empresa_id, imagen, descripcion} = req.body;
+    const {empresa_id,descripcion} = req.body;
+    if (!req.file) {
+      res.status(404).json({message: 'debe cargar un archivo'});
+    }
+
+    const foto = req.file?.originalname;
+    const data = {
+      empresa_id,
+      imagen: foto,
+      descripcion,
+    }
     const galeria =  await Galeria.findByPk(id);
 
     if (!galeria) {
       res.status(404).json({ error: 'Galeria not found' });
       return;
     }
-
-    await galeria.update({empresa_id, imagen, descripcion});
+    await galeria.update(data);
     res.status(200).json(galeria);
   } catch (error) {
     console.error(error);

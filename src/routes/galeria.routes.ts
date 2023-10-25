@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import { crearGaleria, obtenerGalerias, obtenerUnaGaleria, actualizarUnaGaleria, eliminarUnaGaleria } from '../controllers/galeria.controller';
+import { crearGaleria, obtenerGalerias, obtenerUnaGaleria, obtenerGaleriasPorEmpresa, actualizarUnaGaleria, eliminarUnaGaleria } from '../controllers/galeria.controller';
 
-import uploadFile from '../middlewares/uploadFile';
+const uploadFile = require('../middlewares/uploadFile');
 
 
 const router = Router();
@@ -14,6 +14,9 @@ router.get('/', obtenerGalerias);
 
 //Obtener una galeria
 router.get('/:id', obtenerUnaGaleria);
+
+//Obtener una galerias de imagen por empresa
+router.get('/empresa/:id', obtenerGaleriasPorEmpresa);
 
 //Actualizar una galeria
 router.put('/:id', uploadFile('imagen'), actualizarUnaGaleria);
