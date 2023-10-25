@@ -67,7 +67,7 @@ export const eliminarUnaEmpresa =  async (req: Request, res: Response): Promise<
 
     await empresa?.destroy();
 
-    res.status(204).end();
+    res.status(200).json({message: 'Empresa eliminada'});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
