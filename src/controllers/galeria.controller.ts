@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+const { QueryTypes } = require('sequelize');
 import Galeria from "../models/Galeria";
+import sequelize from "sequelize";
 
 export const crearGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    
@@ -22,7 +24,7 @@ export const crearGaleria = async (req: Request, res: Response): Promise<void> =
   }
 }
 
-export const obtenerGalerias = async (res: Response): Promise<void> => {
+export const obtenerGalerias = async (req: Request, res: Response): Promise<void> => {
   try {
     const galerias = await Galeria.findAll();
     res.status(200).json(galerias);
@@ -41,6 +43,21 @@ export const obtenerUnaGaleria = async (req: Request, res: Response): Promise<vo
       return;
     }
     res.status(200).json(galeria);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+export const obtenerGaleriasPorEmpresa = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const param =  req.params.id;
+    const galerias = await Galeria.findAll({
+      where: {
+        empresa_id: param,
+      }
+    });
+    res.status(200).json(galerias);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
