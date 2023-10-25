@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 app.use(cors())
 app.use(json());
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 //rutas
 app.use('/empresas', rutasEmpresa);

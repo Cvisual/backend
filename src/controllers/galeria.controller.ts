@@ -7,8 +7,7 @@ export const crearGaleria = async (req: Request, res: Response): Promise<void> =
     if (!req.file) {
       res.status(404).json({message: 'debe cargar un archivo'});
     }
-
-    const foto = req.file?.originalname;
+    const foto = req.file?.filename;
     const data = {
       empresa_id,
       imagen: foto,
