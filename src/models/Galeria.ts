@@ -30,12 +30,12 @@ Galeria.init({
     }
   },
   imagen: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.TEXT,
+    allowNull: true,
   },
   descripcion: {
     type: DataTypes.TEXT,
-    allowNull: false,
+    allowNull: true,
   },
 },
 {

@@ -3,21 +3,19 @@ import Galeria from "../models/Galeria";
 
 export const crearGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    
-    const {empresa_id, descripcion} = req.body;
-    if (!req.file) {
-      res.status(404).json({message: 'debe cargar un archivo'});
-    }
-    const foto = req.file?.filename;
+    const {empresa_id, imagen, descripcion} = req.body;
+    console.log(req.body);
+   
     const data = {
       empresa_id,
-      imagen: foto,
+      imagen,
       descripcion,
     }
     const galeria =  await Galeria.create(data);
     res.status(200).json(galeria);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error });
   }
 }
 
@@ -64,15 +62,10 @@ export const obtenerGaleriasPorEmpresa = async (req: Request, res: Response): Pr
 export const actualizarUnaGaleria = async (req: Request, res: Response): Promise<void> => {
   try {    
     const {id} =  req.params;
-    const {empresa_id,descripcion} = req.body;
-    if (!req.file) {
-      res.status(404).json({message: 'debe cargar un archivo'});
-    }
-
-    const foto = req.file?.originalname;
+    const {empresa_id, imagen,  descripcion} = req.body;
     const data = {
       empresa_id,
-      imagen: foto,
+      imagen,
       descripcion,
     }
     const galeria =  await Galeria.findByPk(id);

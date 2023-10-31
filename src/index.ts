@@ -5,7 +5,7 @@ import rutasEmpresa from './routes/empresa.routes';
 import rutasGalerias from './routes/galeria.routes';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5001;
 
 app.use(cors())
 app.use(json());

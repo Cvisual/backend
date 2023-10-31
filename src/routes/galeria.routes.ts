@@ -1,13 +1,13 @@
 import {Router} from 'express';
 import { crearGaleria, obtenerGalerias, obtenerUnaGaleria, obtenerGaleriasPorEmpresa, actualizarUnaGaleria, eliminarUnaGaleria } from '../controllers/galeria.controller';
 
-const uploadFile = require('../middlewares/uploadFile');
+//const uploadFile = require('../middlewares/uploadFile');
 
 
 const router = Router();
 
 //crear una galeria
-router.post('/', uploadFile('imagen'), crearGaleria);
+router.post('/', crearGaleria);
 
 //Obtener galerias
 router.get('/', obtenerGalerias);
@@ -19,7 +19,7 @@ router.get('/:id', obtenerUnaGaleria);
 router.get('/empresa/:id', obtenerGaleriasPorEmpresa);
 
 //Actualizar una galeria
-router.put('/:id', uploadFile('imagen'), actualizarUnaGaleria);
+router.put('/:id', actualizarUnaGaleria);
 
 //eliminar una galeria
 router.delete('/:id', eliminarUnaGaleria);
